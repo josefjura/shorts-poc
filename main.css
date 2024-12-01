@@ -1,0 +1,84 @@
+/* Root variables for sizes */
+:root {
+  --header-height: 60px;
+  --footer-height: 50px;
+}
+
+/* Reset defaults */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;  
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Ensures the content stretches vertically */
+}
+
+.header {
+	background-color: #333;
+	color: white;
+	text-align: center;
+	height: var(--header-height);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(32, 32, 32);		
+}
+
+.section-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Enforce one video per scroll */
+  margin-top: 25px; /* Adjust margin for header */
+  background-color: rgb(32, 32, 32);
+  scroll-behavior: smooth; /* Smooth scrolling experience */
+}
+
+.video-wrapper {
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+  gap: 50px;
+  width: 100%; /* Ensure wrapper takes full width */
+  padding: 50vh 0;  /* Padding at the top and bottom */
+}
+
+.video-item {
+  scroll-snap-align: center; /* Snap each video to center of the viewport */
+  width: 80%; /* Slightly smaller than full width for padding */  
+  aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: black;
+  border-radius: 15px; /* Optional: Rounded corners */
+  overflow: hidden; /* Keep content inside rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.video-item video,
+.video-item .placeholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure content fits the aspect ratio */
+	background-size: cover;
+}
+
+
