@@ -47,48 +47,44 @@ body {
   background-color: rgb(32, 32, 32);		
 }
 
-.section-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+/********************/
+/*       VIDEO      */
+/********************/
+
+.video-container {
+  height: 100vh; /* Set the height to the viewport height */
+  width: 100%; /* Full width */
+  display: flex; /* Flexbox for horizontal alignment of children */
+  flex-direction: column; /* Stack children vertically */
   overflow-y: scroll; /* Enable vertical scrolling */
-  scroll-snap-type: y mandatory; /* Enforce one video per scroll */
-  margin-top: 25px; /* Adjust margin for header */
-  background-color: rgb(32, 32, 32);
-  scroll-behavior: smooth; /* Smooth scrolling experience */
+  scroll-snap-type: y mandatory; /* Enforce scroll snapping */
+	scroll-behavior: smooth; /* Smooth scrolling */
+  margin: 0;
+  padding: 0;
 }
 
-.video-wrapper {
-  display: flex;
-  flex-direction: column;
-	align-items: center;
-  gap: 50px;
-  width: 100%; /* Ensure wrapper takes full width */
-  padding: 50vh 0;  /* Padding at the top and bottom */
+.video-wrapper {	
+  flex: 0 0 100%; /* Each child takes up 100% of the parent container */
+  height: 100%; /* Explicitly set height for safety */
+  scroll-snap-align: start;
+	transition: transform 0.5s; /* Smooth transition for the transform property */
+	align-content: center;	
+	justify-items: center;
+	display: grid;	
 }
 
-.video-item {
-  scroll-snap-align: center; /* Snap each video to center of the viewport */
-  width: 80%; /* Slightly smaller than full width for padding */  
-  aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background: black;
-  border-radius: 15px; /* Optional: Rounded corners */
-  overflow: hidden; /* Keep content inside rounded corners */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-}
-
-.video-item video,
-.video-item .placeholder {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure content fits the aspect ratio */
+.placeholder {
+	aspect-ratio: 16 / 9;
+	width: 90%;		
 	background-size: cover;
+  grid-column: 1;
+  grid-row: 1;
 }
 
-
+.current-video {
+	aspect-ratio: 16 / 9;
+	width: 90%;		
+	object-fit: cover;
+  grid-column: 1;
+  grid-row: 1;
+}
