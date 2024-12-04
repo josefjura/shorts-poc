@@ -70,21 +70,30 @@ body {
 	transition: transform 0.5s; /* Smooth transition for the transform property */
 	align-content: center;	
 	justify-items: center;
-	display: grid;	
+	position: relative;
 }
 
-.placeholder {
+.placeholder, .current-video {
 	aspect-ratio: 16 / 9;
-	width: 90%;		
-	background-size: cover;
+	width: 90%;
+	max-height: 90%;
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 1;	
+	max-height: 100%;	
+	object-fit: contain;
+	position: absolute; /* Stack elements on top of each other */
+  top: 50%; /* Center elements vertically */
+  left: 50%; /* Center elements horizontally */
+  transform: translate(-50%, -50%); /
 }
 
-.current-video {
-	aspect-ratio: 16 / 9;
-	width: 90%;		
-	object-fit: cover;
-  grid-column: 1;
-  grid-row: 1;
+.placeholder {	
+  background-size: cover;
+  z-index: 1; /* Place above video */
+}
+
+.current-video {	
+	object-fit: contain; /* Ensure entire video fits within bounds */
+  z-index: 2; /* Place above placeholder */
+  background: black; 
 }
